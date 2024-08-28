@@ -1,1 +1,27 @@
-<p>book-list works!</p>
+<div class="header-block">
+    <div class="search">
+      <input type="text" class="search-control" [formControl]="searchControl" placeholder="Search...">
+    </div>
+    <div class="add-btn">
+      <button mat-stroked-button (click)="onAddClick()"><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="add"></mat-icon>Add Book</button>
+    </div>
+  </div>
+  @if(books$ | async; as books){
+      <mat-grid-list cols="4" rowHeight="300" role="list" [@listAnimation]="books">
+          @for (book of books; track book) {
+              <mat-grid-tile >
+                <app-book-item 
+                  class="list-item"
+                  role="listitem" 
+                  [book]="book" 
+                  (onEdit)="handleBookSelection(book.id)"
+                  (onDelete)="onDeleteItem(book.id)"
+               ></app-book-item>
+              </mat-grid-tile>
+          }
+      </mat-grid-list>
+    }@else{
+      <span>Do not have available books</span>
+    }
+    
+  

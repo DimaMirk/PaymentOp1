@@ -1,1 +1,61 @@
-<p>book-dialog works!</p>
+<h2 mat-dialog-title>{{book ? 'Update Book' : 'Create Book'}}</h2>
+<mat-dialog-content class="mat-typography" [formGroup]="bookForm">
+    <mat-grid-list cols="2" rowHeight="100px" >
+        <mat-grid-tile>
+            @if(img){
+                <div style="position: relative;height: 100%;">
+                    <img [src]="img" alt="Uploaded Image" class="img">
+                    <span (click)="onDeletImgClick()" style="position: absolute; top:5px;right:5px;cursor: pointer; color: white;">
+                        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="cancel"></mat-icon>
+                    </span>
+                </div>
+            }@else{
+                <div class="image-block">
+                    <button mat-button style="position: relative;cursor:pointer">
+                        Update
+                        <input placeholder="Book Image" id="image" type="file" accept="image/png, image/gif, image/jpeg" (change)="onImageSelect($event)">
+                    </button>
+                </div>
+            } 
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-form-field class="example-full-width">
+                <mat-label>Title</mat-label>
+                <input matInput placeholder=""  formControlName="title">
+            </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-form-field class="example-full-width">
+                <mat-label>Author</mat-label>
+                <input matInput placeholder=""  formControlName="author">
+            </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-form-field class="example-full-width">
+                <mat-label>Year of public</mat-label>
+                <input matInput placeholder=""  formControlName="year">
+            </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-form-field class="example-full-width">
+                <mat-label>Language</mat-label>
+                <input matInput placeholder="Book language" formControlName="language">
+            </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-form-field class="example-full-width">
+                <mat-label>Country</mat-label>
+                <input matInput placeholder="Book country" formControlName="country">
+            </mat-form-field>
+        </mat-grid-tile>
+
+    </mat-grid-list>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-stroked-button (click)="onCanselClick()">Cancel</button>
+  @if(book){
+    <button mat-stroked-button (click)="onDeleteClick()" ><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="delete_forever"></mat-icon>Delete</button>
+  }
+  <button mat-stroked-button  (click)="onSaveClick()" cdkFocusInitial><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="check_circle_outline"></mat-icon>{{book ? 'Update' : 'Create'}}</button>
+</mat-dialog-actions>

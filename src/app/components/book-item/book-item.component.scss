@@ -1,0 +1,52 @@
+.cart{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    width: 80%;
+    border: 1px solid grey;
+    border-radius: 10px;
+    max-width: 80%;
+    background: white;
+    cursor: pointer;
+    transition: transform .2s;
+      &:hover{
+        transform: scale(1.1)
+      }
+      &__title{
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 14px;
+        margin-bottom: 10px;
+        text-align: center;
+      } 
+      &__country,
+      &__year,
+      &__subtitle{
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 14px;
+        color: grey;
+        text-align: center;
+        margin-bottom: 10px;
+      }
+      &__country,
+      &__year{
+        color: black;
+      }
+      &__image{
+        height: 100px;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 4px;
+        margin-bottom: 20px;
+      }
+    }
+  
+  
+    .cart-header{
+      display: flex;
+      flex-direction: column;
+    }
+  

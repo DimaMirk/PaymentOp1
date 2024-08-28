@@ -1,1 +1,12 @@
-<p>book-item works!</p>
+<div class="cart" (click)="updateBook(book.id)">
+    <div class="cart-header">
+        <span class="cart__title">Title: {{book.title}}</span> 
+        <span class="cart__subtitle">Author: {{book.author}}</span>
+    </div>
+    <img  [src]="book.imageLink" class="cart__image" alt='Photo of a Book'>
+    <div class="cart__data">
+        <span class="cart__year"> Year of publication: {{book.year}}</span>
+        <span class="cart__country"> Country: {{book.country}}</span>
+    </div>
+  </div>
+  
